@@ -1,0 +1,14 @@
+{
+	"name": "ed/php-cs-fixer-config",
+	"description": "Provides a configuration for php-cs-fixer",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "Elan Ruusamäe",
+			"email": "glen@delfi.ee"
+		}
+	],
+	"require": {
+		"php": "^5.3 || ^7.0"
+	}
+}
