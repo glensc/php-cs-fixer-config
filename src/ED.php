@@ -16,6 +16,10 @@ class ED extends Config {
 
 		$finder = $this->getFinder();
 
+		// revert *.xml from DefaultFinder
+		$finder
+			->notPath('{^\.idea/.*\.xml$}');
+
 		// because php-cs-fixer maintainers are idiots
 		// https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/1027
 		$finder
