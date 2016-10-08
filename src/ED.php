@@ -13,6 +13,14 @@ class ED extends Config {
 
 		$this->level = FixerInterface::NONE_LEVEL;
 		$this->fixers = $this->getRules();
+
+		$finder = $this->getFinder();
+
+		// because php-cs-fixer maintainers are idiots
+		// https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/1027
+		$finder
+			->ignoreDotFiles(false)
+			->name('.php_cs');
 	}
 
 	public function getRules() {
