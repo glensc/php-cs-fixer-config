@@ -13,12 +13,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"ED\\CS\\Config\\": "src"
+			"ED\\CS\\Config\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"ED\\CS\\Config\\Test\\": "tests"
+			"ED\\CS\\Config\\Test\\": "tests/"
 		}
 	},
 	"require-dev": {
