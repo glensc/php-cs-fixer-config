@@ -15,6 +15,7 @@ class GitHelperTest extends TestCase {
 
 	public function setUp() {
 		$this->finder = new DefaultFinder();
+		$this->finder->in(dirname(__DIR__));
 		$this->helper = new GitHelper($this->finder);
 		$this->helper->findGitFiles();
 	}
