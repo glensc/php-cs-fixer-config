@@ -6,7 +6,7 @@ use Symfony\CS\Config\Config;
 use Symfony\CS\FixerInterface;
 
 class ED extends Config {
-	protected $usingCache = false;
+	protected $usingCache = true;
 
 	public function __construct() {
 		parent::__construct('ED', 'The configuration for ED PHP applications');
