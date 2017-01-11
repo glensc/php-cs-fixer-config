@@ -24,10 +24,5 @@
 	"require-dev": {
 		"friendsofphp/php-cs-fixer": "~1.11.0",
 		"symfony/process": "^2.7"
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.0.x-dev"
-		}
 	}
 }
