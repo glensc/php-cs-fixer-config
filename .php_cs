@@ -3,4 +3,9 @@
 $config = require __DIR__ . '/phpcs.php';
 $config->getFinder()->in(__DIR__);
 
+$finder = $config->getFinder();
+
+// test data that must be excluded
+$finder->notPath('tests/res');
+
 return $config;
