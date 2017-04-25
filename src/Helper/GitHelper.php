@@ -30,7 +30,7 @@ class GitHelper {
 	 *
 	 * @link https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/2214
 	 */
-	public function findGitFiles() {
+	public function addGitFilter() {
 		try {
 			$project_dir = $this->getCommandOutput("git rev-parse --show-toplevel");
 		} catch (ProcessFailedException $e) {
