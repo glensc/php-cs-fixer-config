@@ -2,6 +2,7 @@
 
 namespace ED\CS\Config\Helper;
 
+use RuntimeException;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
@@ -26,15 +27,13 @@ class GitHelper {
 	/**
 	 * Setup Finder to inspect only files that are present in Git index.
 	 *
-	 * Will skip this process silently if the repository is not in git repo.
-	 *
 	 * @link https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/2214
 	 */
 	public function addGitFilter() {
 		try {
 			$project_dir = $this->getCommandOutput("git rev-parse --show-toplevel");
 		} catch (ProcessFailedException $e) {
-			return;
+			throw new RuntimeException("Unable to get project root dir:" . $e->getMessage());
 		}
 
 		if (!$project_dir) {

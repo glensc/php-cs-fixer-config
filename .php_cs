@@ -5,7 +5,7 @@ $config->getFinder()->in(__DIR__);
 
 $finder = $config->getFinder();
 
-// test data that must be excluded
+// test data that must be scanned for fixes
 $finder->notPath('tests/res');
 
 return $config;
