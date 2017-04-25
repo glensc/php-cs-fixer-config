@@ -26,7 +26,6 @@ class ED extends Config {
 
 		$this->level = FixerInterface::NONE_LEVEL;
 		$this->fixers = $this->getRules();
-
 	}
 
 	/**
