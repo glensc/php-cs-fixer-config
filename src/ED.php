@@ -63,6 +63,9 @@ class ED extends Config {
 		$finder
 			->notPath('{^\.idea/.+\.xml$}');
 
+		$finder
+			->notPath('#^config/envSpecific/.+$#');
+
 		// because php-cs-fixer maintainers are idiots
 		// https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/1027
 		$finder
