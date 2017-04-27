@@ -33,7 +33,7 @@ class GitHelper {
 		try {
 			$project_dir = $this->getCommandOutput("git rev-parse --show-toplevel");
 		} catch (ProcessFailedException $e) {
-			throw new RuntimeException("Unable to get project root dir:" . $e->getMessage());
+			throw new RuntimeException("Unable to get project root dir: " . $e->getMessage());
 		}
 
 		if (!$project_dir) {
