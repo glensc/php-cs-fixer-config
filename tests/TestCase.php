@@ -2,6 +2,7 @@
 
 namespace ED\CS\Config\Test;
 
+use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
 
 abstract class TestCase extends PHPUnit_Framework_TestCase {
@@ -12,11 +13,18 @@ abstract class TestCase extends PHPUnit_Framework_TestCase {
 	 * @return \ED\CS\Config\ED
 	 */
 	protected function getConfig($dir = null) {
-		$config = new \ED\CS\Config\ED();
-		$config->useGitFilter(false);
-		$config->getFinder()->in($dir ?: $this->getProjectRoot() . '/tests/res');
+		/**
+		 * @var \ED\CS\Config\ED|PHPUnit_Framework_MockObject_MockObject $stub
+		 */
+		$stub = $this->getMockBuilder('\\ED\\CS\\Config\\ED')
+			->setMethods(array('addGitFinder'))
+			->getMock();
 
-		return $config;
+		$stub->method('addGitFinder');
+
+		$stub->getFinder()->in($dir ?: $this->getProjectRoot() . '/tests/res');
+
+		return $stub;
 	}
 
 	/**

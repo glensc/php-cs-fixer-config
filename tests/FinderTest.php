@@ -7,7 +7,9 @@ class FinderTest extends TestCase {
 	 * Test that finder root has effect. i.e that it doesn't default to project root.
 	 */
 	public function testFinderRoot() {
-		$finder = $this->getConfig(__DIR__ . '/res/singlefile')->getFinder();
+		$config = $this->getConfig(__DIR__ . '/res/singlefile');
+		$finder = $config->getFinder();
+
 		$files = iterator_to_array($finder->getIterator());
 
 		// we find just one file

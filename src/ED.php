@@ -9,11 +9,6 @@ class ED extends Config {
 	protected $usingCache = true;
 
 	/**
-	 * @var bool
-	 */
-	private $use_git_filter = true;
-
-	/**
 	 * Private copy of finder.
 	 *
 	 * @see getFinder;
@@ -26,16 +21,6 @@ class ED extends Config {
 
 		$this->level = FixerInterface::NONE_LEVEL;
 		$this->fixers = $this->getRules();
-	}
-
-	/**
-	 * Allow enable/disabling git filter.
-	 * Mostly useful for testing.
-	 *
-	 * @param boolean $enable
-	 */
-	public function useGitFilter($enable) {
-		$this->use_git_filter = $enable;
 	}
 
 	/**
@@ -53,10 +38,7 @@ class ED extends Config {
 
 		$finder = parent::getFinder();
 
-		if ($this->use_git_filter) {
-			$gitHelper = new Helper\GitHelper($finder);
-			$gitHelper->addGitFilter();
-		}
+		$this->addGitFinder($finder);
 
 		// revert *.xml from DefaultFinder
 		$finder
@@ -72,6 +54,16 @@ class ED extends Config {
 			->name('.php_cs');
 
 		return $this->finderInstance = $finder;
+	}
+
+	/**
+	 * Setup Finder to inspect only files that are present in Git index.
+	 *
+	 * @param \Symfony\CS\Finder\DefaultFinder|\Symfony\CS\FinderInterface|\Traversable $finder
+	 */
+	public function addGitFinder($finder) {
+		$gitHelper = new Helper\GitHelper($finder);
+		$gitHelper->addGitFilter();
 	}
 
 	public function getRules() {
