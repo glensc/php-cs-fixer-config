@@ -62,8 +62,14 @@ class ED extends Config {
 	 * @param \Symfony\CS\Finder\DefaultFinder|\Symfony\CS\FinderInterface|\Traversable $finder
 	 */
 	public function addGitFinder($finder) {
-		$gitHelper = new Helper\GitHelper($finder);
-		$gitHelper->addGitFilter();
+		$this->applyFinderFilter(new Filter\GitFilter($finder));
+	}
+
+	protected function applyFinderFilter(Filter\FilterInterface $filter) {
+
+		$filter->apply($this->finder);
+
+		return $this;
 	}
 
 	public function getRules() {

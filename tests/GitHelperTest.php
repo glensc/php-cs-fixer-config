@@ -2,7 +2,7 @@
 
 namespace ED\CS\Config\Test;
 
-use ED\CS\Config\Helper\GitHelper;
+use ED\CS\Config\Filter\GitFilter;
 use Symfony\CS\Finder\DefaultFinder;
 
 class GitHelperTest extends TestCase {
@@ -10,14 +10,15 @@ class GitHelperTest extends TestCase {
 	/** @var DefaultFinder */
 	protected $finder;
 
-	/** @var  GitHelper */
+	/** @var GitFilter */
 	protected $helper;
 
 	public function setUp() {
 		$this->finder = new DefaultFinder();
 		$this->finder->in(dirname(__DIR__));
-		$this->helper = new GitHelper($this->finder);
-		$this->helper->addGitFilter();
+
+		$gitFilter = new GitFilter();
+		$gitFilter->apply($this->finder);
 	}
 
 	public function testFiles() {
