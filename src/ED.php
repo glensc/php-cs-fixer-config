@@ -38,7 +38,7 @@ class ED extends Config {
 
 		$finder = parent::getFinder();
 
-		$this->addGitFinder($finder);
+		$this->applyGitFilter($finder);
 
 		// revert *.xml from DefaultFinder
 		$finder
@@ -59,7 +59,7 @@ class ED extends Config {
 	/**
 	 * Setup Finder to inspect only files that are present in Git index.
 	 */
-	public function addGitFinder() {
+	public function applyGitFilter() {
 		$this->applyFinderFilter(new Filter\GitFilter());
 	}
 

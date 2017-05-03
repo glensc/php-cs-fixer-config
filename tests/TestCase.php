@@ -17,10 +17,10 @@ abstract class TestCase extends PHPUnit_Framework_TestCase {
 		 * @var \ED\CS\Config\ED|PHPUnit_Framework_MockObject_MockObject $stub
 		 */
 		$stub = $this->getMockBuilder('\\ED\\CS\\Config\\ED')
-			->setMethods(array('addGitFinder'))
+			->setMethods(array('applyGitFilter'))
 			->getMock();
 
-		$stub->method('addGitFinder');
+		$stub->method('applyGitFilter');
 
 		$stub->getFinder()->in($dir ?: $this->getProjectRoot() . '/tests/res');
 
