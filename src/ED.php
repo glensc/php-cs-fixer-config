@@ -58,13 +58,17 @@ class ED extends Config {
 
 	/**
 	 * Setup Finder to inspect only files that are present in Git index.
-	 *
-	 * @param \Symfony\CS\Finder\DefaultFinder|\Symfony\CS\FinderInterface|\Traversable $finder
 	 */
-	public function addGitFinder($finder) {
-		$this->applyFinderFilter(new Filter\GitFilter($finder));
+	public function addGitFinder() {
+		$this->applyFinderFilter(new Filter\GitFilter());
 	}
 
+	/**
+	 * Apply $filter to $finder instance.
+	 *
+	 * @param Filter\FilterInterface $filter
+	 * @return $this
+	 */
 	protected function applyFinderFilter(Filter\FilterInterface $filter) {
 
 		$filter->apply($this->finder);
