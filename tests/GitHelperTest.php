@@ -15,7 +15,6 @@ class GitHelperTest extends TestCase {
 
 	public function setUp() {
 		$this->finder = new DefaultFinder();
-		$this->finder->in(dirname(__DIR__));
 
 		$gitFilter = new GitFilter();
 		$gitFilter->apply($this->finder);
@@ -25,6 +24,10 @@ class GitHelperTest extends TestCase {
 		$files = $this->getFilesList();
 
 		$this->assertContains($this->path('src/ED.php'), $files, "Must contain src/ED.php");
+
+		$unique = array_unique($files);
+		$this->assertEquals($unique, $files, "File list does not contain duplicate entries");
+
 		$this->assertNotContains($this->path('.idea/workspace.xml'), $files);
 		$this->assertNotContains($this->path('vendor/autoload.php'), $files);
 	}
