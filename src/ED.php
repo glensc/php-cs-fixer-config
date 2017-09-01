@@ -38,14 +38,16 @@ class ED extends Config {
 
 		$finder = parent::getFinder();
 
-		$this->applyGitFilter($finder);
+		$this->applyGitFilter();
+
+		$ds = preg_quote(DIRECTORY_SEPARATOR, '/');
 
 		// revert *.xml from DefaultFinder
 		$finder
-			->notPath('{^\.idea/.+\.xml$}');
+			->notPath("{^\.idea{$ds}.+\.xml$}");
 
 		$finder
-			->notPath('#^config/envSpecific/.+$#');
+			->notPath("#^config{$ds}envSpecific{$ds}.+$#");
 
 		// because php-cs-fixer maintainers are idiots
 		// https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/1027
