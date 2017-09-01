@@ -24,9 +24,9 @@ class GitHelperTest extends TestCase {
 	public function testFiles() {
 		$files = $this->getFilesList();
 
-		$this->assertContains('src/ED.php', $files);
-		$this->assertNotContains('.idea/workspace.xml', $files);
-		$this->assertNotContains('vendor/autoload.php', $files);
+		$this->assertContains($this->path('src/ED.php'), $files, "Must contain src/ED.php");
+		$this->assertNotContains($this->path('.idea/workspace.xml'), $files);
+		$this->assertNotContains($this->path('vendor/autoload.php'), $files);
 	}
 
 	private function getFilesList() {

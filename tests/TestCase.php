@@ -36,4 +36,16 @@ abstract class TestCase extends PHPUnit_Framework_TestCase {
 	protected function getProjectRoot() {
 		return dirname(__DIR__);
 	}
+
+	/**
+	 * Return OS native path.
+	 * NOTE: using short method name because the method is going to be used a lot.
+	 *
+	 * @param string $path Path with Unix directory separators
+	 * @return string
+	 */
+	protected function path($path) {
+		$components = explode('/', $path);
+		return implode(DIRECTORY_SEPARATOR, $components);
+	}
 }
