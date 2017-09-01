@@ -18,15 +18,22 @@ class GitFilter implements FilterInterface {
 	 */
 	public function apply($finder) {
 		try {
-			$project_dir = ProcessRunner::run("git rev-parse --show-toplevel");
+			$projectDir = ProcessRunner::run("git rev-parse --show-toplevel");
 		} catch (ProcessFailedException $e) {
 			throw new RuntimeException("Unable to get project root dir: " . $e->getMessage());
 		}
 
-		if (!$project_dir) {
+		if (!$projectDir) {
 			return;
 		}
-		$finder->in($project_dir);
+
+		// ran via realpath to canonicalize path for windows
+		$absPath = realpath($projectDir);
+		if (!$absPath) {
+			throw new RuntimeException("Unable to resolve path: $projectDir");
+		}
+
+		$finder->in($absPath);
 
 		$files = explode("\n", ProcessRunner::run("git ls-files"));
 

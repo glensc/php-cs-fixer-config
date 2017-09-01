@@ -22,7 +22,8 @@ abstract class TestCase extends PHPUnit_Framework_TestCase {
 
 		$stub->method('applyGitFilter');
 
-		$stub->getFinder()->in($dir ?: $this->getProjectRoot() . '/tests/res');
+		$absPath = realpath($dir ?: $this->getProjectRoot() . '/tests/res');
+		$stub->getFinder()->in($absPath);
 
 		return $stub;
 	}
