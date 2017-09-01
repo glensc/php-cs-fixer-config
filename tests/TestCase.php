@@ -4,6 +4,7 @@ namespace ED\CS\Config\Test;
 
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
+use Symfony\Component\Finder\Finder;
 
 abstract class TestCase extends PHPUnit_Framework_TestCase {
 
@@ -35,6 +36,21 @@ abstract class TestCase extends PHPUnit_Framework_TestCase {
 	 */
 	protected function getProjectRoot() {
 		return dirname(__DIR__);
+	}
+
+	/**
+	 * Iterate over finder and return relative paths from it.
+	 *
+	 * @param Finder $finder
+	 * @return array
+	 */
+	protected function getFinderRelativePaths(Finder $finder) {
+		$files = array();
+		foreach ($finder as $fi) {
+			$files[] = $fi->getRelativePathname();
+		}
+
+		return $files;
 	}
 
 	/**

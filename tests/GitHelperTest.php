@@ -21,7 +21,7 @@ class GitHelperTest extends TestCase {
 	}
 
 	public function testFiles() {
-		$files = $this->getFilesList();
+		$files = $this->getFinderRelativePaths($this->finder);
 
 		$this->assertContains($this->path('src/ED.php'), $files, "Must contain src/ED.php");
 
@@ -30,14 +30,5 @@ class GitHelperTest extends TestCase {
 
 		$this->assertNotContains($this->path('.idea/workspace.xml'), $files);
 		$this->assertNotContains($this->path('vendor/autoload.php'), $files);
-	}
-
-	private function getFilesList() {
-		$files = array();
-		foreach ($this->finder as $fi) {
-			$files[] = $fi->getRelativePathname();
-		}
-
-		return $files;
 	}
 }

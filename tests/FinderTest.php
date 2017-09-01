@@ -10,11 +10,10 @@ class FinderTest extends TestCase {
 		$config = $this->getConfig(__DIR__ . '/res/singlefile');
 		$finder = $config->getFinder();
 
-		$files = iterator_to_array($finder->getIterator());
+		$files = $this->getFinderRelativePaths($finder);
 
 		// we find just one file
-		$file = $this->path($this->getProjectRoot() . '/tests/res/singlefile/singlefile.php');
-		$this->assertEquals(array($file), array_keys($files), "Must contain just one file from subdir");
+		$this->assertEquals(array('singlefile.php'), $files, "Must contain just one file from subdir");
 	}
 
 	/**
@@ -23,9 +22,9 @@ class FinderTest extends TestCase {
 	 */
 	public function testEnvSpecificExclude() {
 		$finder = $this->getConfig()->getFinder();
-		$files = iterator_to_array($finder->getIterator());
+		$files = $this->getFinderRelativePaths($finder);
 
-		$file = $this->path($this->getProjectRoot() . '/tests/res/config/envSpecific/newlines.php');
+		$file = $this->path('tests/res/config/envSpecific/newlines.php');
 		$this->assertNotContains($file, $files, "Must not contain envSpecific files that are from project root");
 	}
 
@@ -34,10 +33,10 @@ class FinderTest extends TestCase {
 	 */
 	public function testEnvSpecificSpecificExclude() {
 		$finder = $this->getConfig($this->getProjectRoot())->getFinder();
-		$files = iterator_to_array($finder->getIterator());
+		$files = $this->getFinderRelativePaths($finder);
 
 		// must not contain "envSpecific" files
-		$file = $this->path($this->getProjectRoot() . '/tests/res/config/envSpecific/newlines.php');
+		$file = $this->path('tests/res/config/envSpecific/newlines.php');
 		$this->assertContains($file, $files, "Must contain envSpecific file that is not in root");
 	}
 }
