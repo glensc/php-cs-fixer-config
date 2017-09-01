@@ -62,6 +62,7 @@ abstract class TestCase extends PHPUnit_Framework_TestCase {
 	 */
 	protected function path($path) {
 		$components = explode('/', $path);
+
 		return implode(DIRECTORY_SEPARATOR, $components);
 	}
 }
