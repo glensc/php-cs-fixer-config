@@ -35,7 +35,7 @@ class GitFilter implements FilterInterface {
 
 		$finder->in($absPath);
 
-		$files = explode("\n", ProcessRunner::run("git ls-files"));
+		$files = $this->getGitFiles();
 
 		// this filter would accept only files that are present in Git
 		$finder->filter(function (SplFileInfo $file) use (&$files) {
@@ -43,5 +43,22 @@ class GitFilter implements FilterInterface {
 
 			return $key;
 		});
+	}
+
+	/**
+	 * Get listing of files present in git index.
+	 *
+	 * @return array
+	 */
+	private function getGitFiles() {
+		$files = explode("\n", ProcessRunner::run('git ls-files'));
+
+		if (DIRECTORY_SEPARATOR === '\\') {
+			array_walk($files, function (&$file) {
+				$file = strtr($file, '/', DIRECTORY_SEPARATOR);
+			});
+		}
+
+		return $files;
 	}
 }
