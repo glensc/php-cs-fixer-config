@@ -54,10 +54,22 @@ class GitFilter implements FilterInterface {
 		$files = explode("\n", ProcessRunner::run('git ls-files'));
 
 		if (DIRECTORY_SEPARATOR === '\\') {
-			array_walk($files, function (&$file) {
-				$file = strtr($file, '/', DIRECTORY_SEPARATOR);
-			});
+			$files = $this->unixPathsToWindowsPaths($files);
 		}
+
+		return $files;
+	}
+
+	/**
+	 * Convert path separators from '/' to '\\'
+	 *
+	 * @param string[] $files
+	 * @return string[]
+	 */
+	private function unixPathsToWindowsPaths($files) {
+		array_walk($files, function (&$file) {
+			$file = strtr($file, '/', DIRECTORY_SEPARATOR);
+		});
 
 		return $files;
 	}
