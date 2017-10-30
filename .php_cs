@@ -3,7 +3,6 @@
 
 /** @var ED\CS\Config\ED $config */
 $config = require __DIR__ . '/phpcs.php';
-$config->getFinder()->in(__DIR__);
 
 // get defaults
 $rules = $config->getRules();
