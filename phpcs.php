@@ -1,10 +1,10 @@
 <?php
 
-// installed via composer?
-if (file_exists($autoload = __DIR__ . '/../../autoload.php')) {
-	require_once $autoload;
-} else {
-	require_once __DIR__ . '/vendor/autoload.php';
-}
+// do not use composer here
+// causes fatals when different symfony versions installed
+require_once __DIR__ . '/src/ED.php';
+require_once __DIR__ . '/src/ProcessRunner.php';
+require_once __DIR__ . '/src/Filter/FilterInterface.php';
+require_once __DIR__ . '/src/Filter/GitFilter.php';
 
 return new ED\CS\Config\ED();
