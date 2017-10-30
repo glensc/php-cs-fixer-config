@@ -28,6 +28,11 @@ class ED extends Config {
 
 	public function getRules() {
 		return array(
+			// PSR2 that conflicts with Delfi Standard
+			'indentation_type' => false,
+			'class_definition' => false,
+			'braces' => false,
+
 			'no_useless_else' => true,
 		);
 	}
