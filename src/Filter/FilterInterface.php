@@ -2,9 +2,11 @@
 
 namespace ED\CS\Config\Filter;
 
+use Symfony\Component\Finder\Finder;
+
 interface FilterInterface {
 	/**
-	 * @param \Symfony\CS\Finder\DefaultFinder|\Symfony\CS\FinderInterface|\Traversable $finder
+	 * @param Finder $finder
 	 */
-	public function apply($finder);
+	public function apply(Finder $finder);
 }

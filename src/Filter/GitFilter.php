@@ -4,6 +4,7 @@ namespace ED\CS\Config\Filter;
 
 use ED\CS\Config\ProcessRunner;
 use RuntimeException;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
@@ -14,9 +15,9 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
  */
 class GitFilter implements FilterInterface {
 	/**
-	 * @param \Symfony\CS\Finder\DefaultFinder|\Symfony\CS\FinderInterface|\Traversable $finder
+	 * @inheritdoc
 	 */
-	public function apply($finder) {
+	public function apply(Finder $finder) {
 		try {
 			$projectDir = ProcessRunner::run("git rev-parse --show-toplevel");
 		} catch (ProcessFailedException $e) {
