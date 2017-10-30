@@ -2,7 +2,7 @@
 
 namespace ED\CS\Config;
 
-use Symfony\CS\Config\Config;
+use Symfony\CS\Config;
 use Symfony\CS\FixerInterface;
 
 class ED extends Config {
