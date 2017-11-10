@@ -7,7 +7,6 @@ use PHPUnit_Framework_TestCase;
 use Symfony\Component\Finder\Finder;
 
 abstract class TestCase extends PHPUnit_Framework_TestCase {
-
 	/**
 	 * Get Config instance configured to run in $dir
 	 *

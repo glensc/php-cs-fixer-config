@@ -6,7 +6,6 @@ use ED\CS\Config\Filter\GitFilter;
 use Symfony\CS\Finder\DefaultFinder;
 
 class GitHelperTest extends TestCase {
-
 	/** @var DefaultFinder */
 	protected $finder;
 
@@ -23,10 +22,10 @@ class GitHelperTest extends TestCase {
 	public function testFiles() {
 		$files = $this->getFinderRelativePaths($this->finder);
 
-		$this->assertContains($this->path('src/ED.php'), $files, "Must contain src/ED.php");
+		$this->assertContains($this->path('src/ED.php'), $files, 'Must contain src/ED.php');
 
 		$unique = array_unique($files);
-		$this->assertEquals($unique, $files, "File list does not contain duplicate entries");
+		$this->assertEquals($unique, $files, 'File list does not contain duplicate entries');
 
 		$this->assertNotContains($this->path('.idea/workspace.xml'), $files);
 		$this->assertNotContains($this->path('vendor/autoload.php'), $files);

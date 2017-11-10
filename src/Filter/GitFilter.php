@@ -11,17 +11,17 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 /**
  * Setup Finder to inspect only files that are present in Git index.
  *
- * @link https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/2214
+ * @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/2214
  */
 class GitFilter implements FilterInterface {
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function apply(Finder $finder) {
 		try {
-			$projectDir = ProcessRunner::run("git rev-parse --show-toplevel");
+			$projectDir = ProcessRunner::run('git rev-parse --show-toplevel');
 		} catch (ProcessFailedException $e) {
-			throw new RuntimeException("Unable to get project root dir: " . $e->getMessage());
+			throw new RuntimeException('Unable to get project root dir: ' . $e->getMessage());
 		}
 
 		if (!$projectDir) {

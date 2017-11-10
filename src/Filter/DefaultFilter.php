@@ -10,7 +10,7 @@ use Symfony\Component\Finder\Finder;
 class DefaultFilter implements FilterInterface
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function apply(Finder $finder)
     {
