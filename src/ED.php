@@ -3,6 +3,7 @@
 namespace ED\CS\Config;
 
 use PhpCsFixer\Config;
+use PhpCsFixer\RuleSet;
 
 class ED extends Config {
 	public function __construct() {
@@ -32,13 +33,8 @@ class ED extends Config {
 	 * @return array
 	 */
 	public function getDefaultRules() {
-		return
-			array(
-				'@PSR2' => true,
-				// PSR2 that conflicts with Delfi Standard
-				'indentation_type' => false,
-				'class_definition' => false,
-			)
+		return array()
+			+ $this->getPSR2Rules()
 			+ $this->getRiskyRules()
 			+ $this->getSymfonyRules()
 			+ array(
@@ -75,8 +71,21 @@ class ED extends Config {
 	}
 
 	/**
+	 * @return array
+	 */
+	public function getPSR2Rules() {
+		return array(
+			'@PSR2' => true,
+			// PSR2 that conflicts with Delfi Standard
+			'indentation_type' => false,
+			'class_definition' => false,
+		);
+	}
+
+	/**
 	 * Suitable rules from @Symfony RuleSet.
 	 *
+	 * @see RuleSet
 	 * @return array
 	 */
 	public function getSymfonyRules() {
