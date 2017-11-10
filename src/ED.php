@@ -5,8 +5,17 @@ namespace ED\CS\Config;
 use PhpCsFixer\Config;
 
 class ED extends Config {
+	private $rules = array(
+		// PSR2 that conflicts with Delfi Standard
+		'indentation_type' => false,
+		'class_definition' => false,
+		'braces' => false,
+
+		'no_useless_else' => true,
+	);
+
 	public function __construct() {
-		parent::__construct('ED');
+		parent::__construct();
 
 		$this->setUsingCache(true);
 
@@ -26,14 +35,19 @@ class ED extends Config {
 		return $this;
 	}
 
-	public function getRules() {
-		return array(
-			// PSR2 that conflicts with Delfi Standard
-			'indentation_type' => false,
-			'class_definition' => false,
-			'braces' => false,
+	/**
+	 * {@inheritdoc}
+	 */
+	public function setRules(array $rules) {
+		$this->rules = $rules;
 
-			'no_useless_else' => true,
-		);
+		return $this;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getRules() {
+		return $this->rules;
 	}
 }
