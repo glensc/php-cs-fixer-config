@@ -3,7 +3,6 @@
 namespace ED\CS\Config\Test;
 
 use PHPUnit_Framework_MockObject_MockObject;
-use PHPUnit_Framework_TestCase;
 use Symfony\Component\Finder\Finder;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase {
@@ -17,10 +16,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
 		 * @var \ED\CS\Config\ED|PHPUnit_Framework_MockObject_MockObject $stub
 		 */
 		$stub = $this->getMockBuilder('\\ED\\CS\\Config\\ED')
-			->setMethods(array('applyGitFilter'))
+			->setMethods(array('applyFinderFilter'))
 			->getMock();
 
-		$stub->method('applyGitFilter');
+		$stub->method('applyFinderFilter');
 
 		$absPath = realpath($dir ?: $this->getProjectRoot() . '/tests/res');
 		$stub->getFinder()->in($absPath);

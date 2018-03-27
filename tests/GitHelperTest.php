@@ -3,17 +3,17 @@
 namespace ED\CS\Config\Test;
 
 use ED\CS\Config\Filter\GitFilter;
-use Symfony\CS\Finder\DefaultFinder;
+use PhpCsFixer\Finder;
 
 class GitHelperTest extends TestCase {
-	/** @var DefaultFinder */
+	/** @var Finder */
 	protected $finder;
 
 	/** @var GitFilter */
 	protected $helper;
 
 	public function setUp() {
-		$this->finder = new DefaultFinder();
+		$this->finder = new Finder();
 
 		$gitFilter = new GitFilter();
 		$gitFilter->apply($this->finder);
