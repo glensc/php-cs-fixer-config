@@ -97,6 +97,9 @@ class ED extends Config {
 			'indentation_type' => false,
 			'class_definition' => false,
 
+			// Conflicts with PHPStorm
+			'cast_spaces' => false,
+
 			// Rules from Symfony to invert
 			'phpdoc_annotation_without_dot' => true,
 			'phpdoc_indent' => true,
