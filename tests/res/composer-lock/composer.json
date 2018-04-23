@@ -1,0 +1,22 @@
+{
+	"name": "test/composer-lock",
+	"repositories": [
+		{
+			"type": "path",
+			"url": "../composer-json"
+		},
+		{
+			"packagist.org": false
+		}
+	],
+	"config": {
+		"platform": {
+			"php": "5.3.0"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"require": {
+		"test/composer-json": "*"
+	}
+}
