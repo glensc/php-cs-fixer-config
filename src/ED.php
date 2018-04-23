@@ -6,13 +6,18 @@ use PhpCsFixer\Config;
 use PhpCsFixer\RuleSet;
 
 class ED extends Config {
+	/** @var string */
+	private $dir;
+
 	public function __construct() {
 		parent::__construct();
+
+		$this->dir = ProjectRootDetector::detect();
 
 		$this->setUsingCache(true);
 		$this->setRiskyAllowed(true);
 		$this->setRules($this->getDefaultRules());
-		$this->applyFinderFilter(new Filter\GitFilter());
+		$this->applyFinderFilter(new Filter\GitFilter($this->dir));
 		$this->applyFinderFilter(new Filter\DefaultFilter());
 	}
 

@@ -15,7 +15,7 @@ class GitHelperTest extends TestCase {
 	public function setUp() {
 		$this->finder = new Finder();
 
-		$gitFilter = new GitFilter();
+		$gitFilter = new GitFilter(dirname(__DIR__));
 		$gitFilter->apply($this->finder);
 	}
 

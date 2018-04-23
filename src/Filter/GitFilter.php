@@ -3,10 +3,8 @@
 namespace ED\CS\Config\Filter;
 
 use ED\CS\Config\ProcessRunner;
-use RuntimeException;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 
 /**
  * Setup Finder to inspect only files that are present in Git index.
@@ -14,27 +12,18 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
  * @see https://github.com/FriendsOfPHP/PHP-CS-Fixer/issues/2214
  */
 class GitFilter implements FilterInterface {
+	/** @var string */
+	private $dir;
+
+	public function __construct($dir) {
+		$this->dir = $dir;
+	}
+
 	/**
 	 * {@inheritdoc}
 	 */
 	public function apply(Finder $finder) {
-		try {
-			$projectDir = ProcessRunner::run('git rev-parse --show-toplevel');
-		} catch (ProcessFailedException $e) {
-			throw new RuntimeException('Unable to get project root dir: ' . $e->getMessage());
-		}
-
-		if (!$projectDir) {
-			return;
-		}
-
-		// ran via realpath to canonicalize path for windows
-		$absPath = realpath($projectDir);
-		if (!$absPath) {
-			throw new RuntimeException("Unable to resolve path: $projectDir");
-		}
-
-		$finder->in($absPath);
+		$finder->in($this->dir);
 
 		$files = $this->getGitFiles();
 
