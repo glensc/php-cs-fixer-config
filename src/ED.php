@@ -38,12 +38,14 @@ class ED extends Config {
 	 * @return array
 	 */
 	public function getDefaultRules() {
+		$platformVersion = new PlatformVersion($this->dir);
+
 		return array()
 			+ $this->getSymfonyRules()
 			+ $this->getRiskyRules()
 			+ array(
 				'blank_line_before_return' => true,
-				'array_syntax' => array('syntax' => 'long'),
+				'array_syntax' => array('syntax' => $platformVersion->satisfies('^5.4') ? 'short' : 'long'),
 				'binary_operator_spaces' => array('align_double_arrow' => false),
 				'function_declaration' => array('closure_function_spacing' => 'one'),
 				'linebreak_after_opening_tag' => false,
