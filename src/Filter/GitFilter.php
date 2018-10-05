@@ -56,7 +56,7 @@ class GitFilter implements FilterInterface {
 	 */
 	private function unixPathsToWindowsPaths($files) {
 		array_walk($files, function (&$file) {
-			$file = strtr($file, '/', DIRECTORY_SEPARATOR);
+			$file = str_replace('/', DIRECTORY_SEPARATOR, $file);
 		});
 
 		return $files;
