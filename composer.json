@@ -15,7 +15,8 @@
 		"sort-packages": true
 	},
 	"require": {
-		"php": "^5.6 || ^7.0"
+		"php": "^5.6 || ^7.0",
+		"ext-json": "*"
 	},
 	"require-dev": {
 		"composer/semver": "^1.0",
