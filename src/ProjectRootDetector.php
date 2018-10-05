@@ -6,6 +6,10 @@ use RuntimeException;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class ProjectRootDetector {
+	/**
+	 * @throws RuntimeException
+	 * @return string
+	 */
 	public static function detect() {
 		try {
 			$topDir = ProcessRunner::run('git rev-parse --show-toplevel');
