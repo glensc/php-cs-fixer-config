@@ -48,6 +48,7 @@ class DefaultRules implements RuleInterface {
 			'ereg_to_preg' => true,
 			'no_alias_functions' => true,
 			'no_php4_constructor' => true,
+			'dir_constant' => true,
 		];
 	}
 
