@@ -80,7 +80,7 @@ class PlatformVersion {
 	private function readJsonFile($fileName) {
 		$filePath = $this->dir . DIRECTORY_SEPARATOR . $fileName;
 		if (!file_exists($filePath)) {
-			return array();
+			return [];
 		}
 
 		return json_decode(file_get_contents($filePath), true);

@@ -40,16 +40,16 @@ class ED extends Config {
 	public function getDefaultRules() {
 		$platformVersion = new PlatformVersion($this->dir);
 
-		return array()
+		return []
 			+ $this->getSymfonyRules()
 			+ $this->getRiskyRules()
-			+ array(
+			+ [
 				'blank_line_before_return' => true,
-				'array_syntax' => array('syntax' => $platformVersion->satisfies('>=5.4') ? 'short' : 'long'),
-				'binary_operator_spaces' => array('align_double_arrow' => false),
-				'function_declaration' => array('closure_function_spacing' => 'one'),
+				'array_syntax' => ['syntax' => $platformVersion->satisfies('>=5.4') ? 'short' : 'long'],
+				'binary_operator_spaces' => ['align_double_arrow' => false],
+				'function_declaration' => ['closure_function_spacing' => 'one'],
 				'linebreak_after_opening_tag' => false,
-				'method_argument_space' => array('keep_multiple_spaces_after_comma' => false),
+				'method_argument_space' => ['keep_multiple_spaces_after_comma' => false],
 				'no_multiline_whitespace_before_semicolons' => true,
 				'no_short_echo_tag' => true,
 				'no_useless_else' => true,
@@ -59,7 +59,7 @@ class ED extends Config {
 				'simplified_null_return' => false,
 				'single_blank_line_before_namespace' => true,
 				'strict_comparison' => false,
-			);
+			];
 	}
 
 	/**
@@ -68,23 +68,23 @@ class ED extends Config {
 	 * @return array
 	 */
 	public function getRiskyRules() {
-		return array(
+		return [
 			'ereg_to_preg' => true,
 			'no_alias_functions' => true,
 			'no_php4_constructor' => true,
-		);
+		];
 	}
 
 	/**
 	 * @return array
 	 */
 	public function getPSR2Rules() {
-		return array(
+		return [
 			'@PSR2' => true,
 			// PSR2 that conflicts with Delfi Standard
 			'indentation_type' => false,
 			'class_definition' => false,
-		);
+		];
 	}
 
 	/**
@@ -97,7 +97,7 @@ class ED extends Config {
 	 * @return array
 	 */
 	public function getSymfonyRules() {
-		return array(
+		return [
 			'@Symfony' => true,
 
 			// PSR2 that conflicts with Delfi Standard
@@ -127,14 +127,14 @@ class ED extends Config {
 			'yoda_style' => false,
 			'phpdoc_separation' => false,
 			'blank_line_after_opening_tag' => false,
-			'concat_space' => array('spacing' => 'one'),
+			'concat_space' => ['spacing' => 'one'],
 			'no_blank_lines_after_phpdoc' => false,
 			'phpdoc_align' => false,
-			'phpdoc_no_alias_tag' => array('type' => 'var', 'link' => 'see'),
+			'phpdoc_no_alias_tag' => ['type' => 'var', 'link' => 'see'],
 			'phpdoc_summary' => false,
 			'phpdoc_to_comment' => false,
 			'braces' => false,
 			'phpdoc_var_without_name' => false,
-		);
+		];
 	}
 }

@@ -13,7 +13,7 @@ class FinderTest extends TestCase {
 		$files = $this->getFinderRelativePaths($finder);
 
 		// we find just one file
-		$this->assertEquals(array('singlefile.php'), $files, 'Must contain just one file from subdir');
+		$this->assertEquals(['singlefile.php'], $files, 'Must contain just one file from subdir');
 	}
 
 	/**

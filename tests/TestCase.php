@@ -16,7 +16,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
 		 * @var \ED\CS\Config\ED|PHPUnit_Framework_MockObject_MockObject $stub
 		 */
 		$stub = $this->getMockBuilder('\\ED\\CS\\Config\\ED')
-			->setMethods(array('applyFinderFilter'))
+			->setMethods(['applyFinderFilter'])
 			->getMock();
 
 		$stub->method('applyFinderFilter');
@@ -43,7 +43,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
 	 * @return array
 	 */
 	protected function getFinderRelativePaths(Finder $finder) {
-		$files = array();
+		$files = [];
 		foreach ($finder as $fi) {
 			$files[] = $fi->getRelativePathname();
 		}
