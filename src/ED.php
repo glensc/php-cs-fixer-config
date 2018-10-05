@@ -34,6 +34,14 @@ class ED extends Config {
 	}
 
 	/**
+	 * @deprecated
+	 * @return array
+	 */
+	public function getDefaultRules() {
+		return $this->getRules();
+	}
+
+	/**
 	 * Apply $filter to $finder instance.
 	 *
 	 * @param Filter\FilterInterface $filter
