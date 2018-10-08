@@ -9,33 +9,36 @@ class DefaultRules implements RuleInterface {
 	 * @param RuleBuilder $builder
 	 */
 	public function apply(RuleBuilder $builder) {
-		$builder->applyRules($this->getDefaultRules());
+		$builder->applyRules($this->getSymfonyRules());
+		$builder->applyRules($this->getRiskyRules());
+		$builder->applyRules($this->getRules());
 	}
 
 	/**
 	 * @see RuleSet
 	 * @return array
 	 */
-	private function getDefaultRules() {
-		return []
-			+ $this->getSymfonyRules()
-			+ $this->getRiskyRules()
-			+ [
-				'blank_line_before_return' => true,
-				'binary_operator_spaces' => ['align_double_arrow' => false],
-				'function_declaration' => ['closure_function_spacing' => 'one'],
-				'linebreak_after_opening_tag' => false,
-				'method_argument_space' => ['keep_multiple_spaces_after_comma' => false],
-				'no_multiline_whitespace_before_semicolons' => true,
-				'no_short_echo_tag' => true,
-				'no_useless_else' => true,
-				'no_useless_return' => true,
-				'ordered_imports' => true,
-				'phpdoc_order' => true,
-				'simplified_null_return' => false,
-				'single_blank_line_before_namespace' => true,
-				'strict_comparison' => false,
-			];
+	private function getRules() {
+		return [
+			// PSR2 that conflicts with Delfi Standard
+			'indentation_type' => false,
+			'class_definition' => false,
+
+			'blank_line_before_return' => true,
+			'binary_operator_spaces' => ['align_double_arrow' => false],
+			'function_declaration' => ['closure_function_spacing' => 'one'],
+			'linebreak_after_opening_tag' => false,
+			'method_argument_space' => ['keep_multiple_spaces_after_comma' => false],
+			'no_multiline_whitespace_before_semicolons' => true,
+			'no_short_echo_tag' => true,
+			'no_useless_else' => true,
+			'no_useless_return' => true,
+			'ordered_imports' => true,
+			'phpdoc_order' => true,
+			'simplified_null_return' => false,
+			'single_blank_line_before_namespace' => true,
+			'strict_comparison' => false,
+		];
 	}
 
 	/**
@@ -43,7 +46,7 @@ class DefaultRules implements RuleInterface {
 	 *
 	 * @return array
 	 */
-	public function getRiskyRules() {
+	private function getRiskyRules() {
 		return [
 			'ereg_to_preg' => true,
 			'no_alias_functions' => true,
@@ -53,33 +56,14 @@ class DefaultRules implements RuleInterface {
 	}
 
 	/**
-	 * @return array
-	 */
-	public function getPSR2Rules() {
-		return [
-			'@PSR2' => true,
-			// PSR2 that conflicts with Delfi Standard
-			'indentation_type' => false,
-			'class_definition' => false,
-		];
-	}
-
-	/**
 	 * Suitable rules from @Symfony RuleSet.
-	 *
-	 * NOTE: Due the way PhpCsFixer loads rules,
-	 * reusing getPSR2Rules method will not work here
 	 *
 	 * @see RuleSet
 	 * @return array
 	 */
-	public function getSymfonyRules() {
+	private function getSymfonyRules() {
 		return [
 			'@Symfony' => true,
-
-			// PSR2 that conflicts with Delfi Standard
-			'indentation_type' => false,
-			'class_definition' => false,
 
 			// Conflicts with PHPStorm
 			'cast_spaces' => false,
