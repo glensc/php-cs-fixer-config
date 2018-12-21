@@ -14,6 +14,9 @@
 		},
 		"sort-packages": true
 	},
+	"archive": {
+		"exclude": ["/.*", "/tests", "/vendor", "/*.spec", "/*.xml", "/*.md", "/*.json"]
+	},
 	"require": {
 		"php": "^5.3 || ^7.0",
 		"ext-json": "*"
