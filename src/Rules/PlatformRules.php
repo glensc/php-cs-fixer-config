@@ -17,6 +17,11 @@ class PlatformRules implements RuleInterface {
 	 * @param RuleBuilder $builder
 	 */
 	public function apply(RuleBuilder $builder) {
-		$builder['array_syntax'] = ['syntax' => $this->platform->satisfies('>=5.4') ? 'short' : 'long'];
+		$php54 = $this->platform->satisfies('>=5.4');
+
+		$builder['array_syntax'] = ['syntax' => $php54 ? 'short' : 'long'];
+
+		// "self::" accessor in closures requires php >= 5.4, not safe to always enable
+		$builder['self_accessor'] = $php54;
 	}
 }

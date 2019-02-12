@@ -78,7 +78,6 @@ class DefaultRules implements RuleInterface {
 			'phpdoc_scalar' => true,
 			'phpdoc_single_line_var_spacing' => true,
 			'phpdoc_trim' => true,
-			'self_accessor' => true,
 			'single_quote' => true,
 			'standardize_not_equals' => true,
 			'ternary_operator_spaces' => true,
