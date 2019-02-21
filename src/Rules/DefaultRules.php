@@ -24,9 +24,10 @@ class DefaultRules implements RuleInterface {
 			'indentation_type' => false,
 			'class_definition' => false,
 
-			'blank_line_before_return' => true,
 			'binary_operator_spaces' => ['align_double_arrow' => false],
+			'blank_line_before_return' => true,
 			'function_declaration' => ['closure_function_spacing' => 'one'],
+			'function_to_constant' => true,
 			'linebreak_after_opening_tag' => false,
 			'method_argument_space' => ['keep_multiple_spaces_after_comma' => false],
 			'no_multiline_whitespace_before_semicolons' => true,
