@@ -3,7 +3,11 @@
 namespace ED\CS\Config;
 
 use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
 
+/**
+ * @method Finder getFinder()
+ */
 class ED extends Config {
 	/** @var RuleBuilder */
 	private $ruleBuilder;
