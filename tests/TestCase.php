@@ -13,7 +13,8 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @return \glen\PhpCsFixerConfig\Config
      */
-    protected function getConfig($dir = null) {
+    protected function getConfig($dir = null)
+    {
         /**
          * @var \glen\PhpCsFixerConfig\Config|PHPUnit_Framework_MockObject_MockObject $stub
          */
@@ -34,7 +35,8 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @return string
      */
-    protected function getProjectRoot() {
+    protected function getProjectRoot()
+    {
         return dirname(__DIR__);
     }
 
@@ -43,7 +45,8 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    protected function getFinderRelativePaths(Finder $finder) {
+    protected function getFinderRelativePaths(Finder $finder)
+    {
         $files = [];
         foreach ($finder as $fi) {
             $files[] = $fi->getRelativePathname();
@@ -59,7 +62,8 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
      * @param string $path Path with Unix directory separators
      * @return string
      */
-    protected function path($path) {
+    protected function path($path)
+    {
         $components = explode('/', $path);
 
         return implode(DIRECTORY_SEPARATOR, $components);

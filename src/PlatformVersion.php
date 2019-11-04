@@ -9,7 +9,8 @@ class PlatformVersion
     /** @var string */
     private $dir;
 
-    public function __construct($dir) {
+    public function __construct($dir)
+    {
         $this->dir = $dir;
     }
 
@@ -19,7 +20,8 @@ class PlatformVersion
      * @param string $constraints
      * @return bool
      */
-    public function satisfies($constraints) {
+    public function satisfies($constraints)
+    {
         $version = $this->getPhpVersion();
         if (!$version) {
             return false;
@@ -28,7 +30,8 @@ class PlatformVersion
         return Semver::satisfies($version, $constraints);
     }
 
-    public function getPhpVersion() {
+    public function getPhpVersion()
+    {
         $version = $this->versionFromLock();
         if ($version) {
             return $version;
@@ -40,7 +43,8 @@ class PlatformVersion
     /**
      * Extract Platform version from composer.lock
      */
-    private function versionFromLock() {
+    private function versionFromLock()
+    {
         $lockFile = $this->readJsonFile('composer.lock');
 
         /*
@@ -59,7 +63,8 @@ class PlatformVersion
     /**
      * Extract Platform version from composer.lock
      */
-    private function versionFromComposer() {
+    private function versionFromComposer()
+    {
         $composerFile = $this->readJsonFile('composer.json');
 
         /*
@@ -78,7 +83,8 @@ class PlatformVersion
         return null;
     }
 
-    private function readJsonFile($fileName) {
+    private function readJsonFile($fileName)
+    {
         $filePath = $this->dir . DIRECTORY_SEPARATOR . $fileName;
         if (!file_exists($filePath)) {
             return [];

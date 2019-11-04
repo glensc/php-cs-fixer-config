@@ -11,7 +11,8 @@ class ProjectRootDetector
      * @throws RuntimeException
      * @return string
      */
-    public static function detect() {
+    public static function detect()
+    {
         try {
             $topDir = ProcessRunner::run('git rev-parse --show-toplevel');
         } catch (ProcessFailedException $e) {

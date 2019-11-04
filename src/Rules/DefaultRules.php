@@ -6,17 +6,19 @@ use glen\PhpCsFixerConfig\RuleBuilder;
 
 class DefaultRules implements RuleInterface
 {
-    public function apply(RuleBuilder $builder) {
+    public function apply(RuleBuilder $builder)
+    {
         $builder->applyRules($this->getSymfonyRules());
         $builder->applyRules($this->getRiskyRules());
         $builder->applyRules($this->getRules());
     }
 
     /**
-     * @see RuleSet
      * @return array
+     * @see RuleSet
      */
-    private function getRules() {
+    private function getRules()
+    {
         return [
             'binary_operator_spaces' => ['align_double_arrow' => false],
             'blank_line_before_return' => true,
@@ -41,7 +43,8 @@ class DefaultRules implements RuleInterface
      *
      * @return array
      */
-    private function getRiskyRules() {
+    private function getRiskyRules()
+    {
         return [
             'ereg_to_preg' => true,
             'no_alias_functions' => true,
@@ -53,10 +56,11 @@ class DefaultRules implements RuleInterface
     /**
      * Suitable rules from @Symfony RuleSet.
      *
-     * @see RuleSet
      * @return array
+     * @see RuleSet
      */
-    private function getSymfonyRules() {
+    private function getSymfonyRules()
+    {
         return [
             '@Symfony' => true,
 

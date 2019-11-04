@@ -16,14 +16,16 @@ class GitFilter implements FilterInterface
     /** @var string */
     private $dir;
 
-    public function __construct($dir) {
+    public function __construct($dir)
+    {
         $this->dir = $dir;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function apply(Finder $finder) {
+    public function apply(Finder $finder)
+    {
         $finder->in($this->dir);
 
         $files = $this->getGitFiles();
@@ -39,7 +41,8 @@ class GitFilter implements FilterInterface
      *
      * @return array
      */
-    private function getGitFiles() {
+    private function getGitFiles()
+    {
         $files = explode("\n", ProcessRunner::run('git ls-files'));
 
         if (DIRECTORY_SEPARATOR === '\\') {
@@ -55,7 +58,8 @@ class GitFilter implements FilterInterface
      * @param string[] $files
      * @return string[]
      */
-    private function unixPathsToWindowsPaths($files) {
+    private function unixPathsToWindowsPaths($files)
+    {
         array_walk($files, function (&$file) {
             $file = str_replace('/', DIRECTORY_SEPARATOR, $file);
         });

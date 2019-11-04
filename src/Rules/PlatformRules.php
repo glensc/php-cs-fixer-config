@@ -10,11 +10,13 @@ class PlatformRules implements RuleInterface
     /** @var PlatformVersion */
     private $platform;
 
-    public function __construct($dir) {
+    public function __construct($dir)
+    {
         $this->platform = new PlatformVersion($dir);
     }
 
-    public function apply(RuleBuilder $builder) {
+    public function apply(RuleBuilder $builder)
+    {
         $php54 = $this->platform->satisfies('>=5.4');
         $php70 = $this->platform->satisfies('>=7.0');
         $php71 = $this->platform->satisfies('>=7.1');

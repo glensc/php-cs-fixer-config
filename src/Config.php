@@ -13,7 +13,8 @@ class Config extends PhpCsFixerConfig
     /** @var RuleBuilder */
     private $ruleBuilder;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
 
         $dir = ProjectRootDetector::detect();
@@ -30,19 +31,22 @@ class Config extends PhpCsFixerConfig
         $this->applyRuleSet(new Rules\DefaultRules());
     }
 
-    public function getRuleBuilder() {
+    public function getRuleBuilder()
+    {
         return $this->ruleBuilder;
     }
 
-    public function getRules() {
+    public function getRules()
+    {
         return $this->getRuleBuilder()->getRules();
     }
 
     /**
-     * @deprecated
      * @return array
+     * @deprecated
      */
-    public function getDefaultRules() {
+    public function getDefaultRules()
+    {
         return $this->getRules();
     }
 
@@ -51,7 +55,8 @@ class Config extends PhpCsFixerConfig
      *
      * @return $this
      */
-    protected function applyFinderFilter(Filter\FilterInterface $filter) {
+    protected function applyFinderFilter(Filter\FilterInterface $filter)
+    {
         $filter->apply($this->getFinder());
 
         return $this;
@@ -62,7 +67,8 @@ class Config extends PhpCsFixerConfig
      *
      * @return $this
      */
-    protected function applyRuleSet(Rules\RuleInterface $rules) {
+    protected function applyRuleSet(Rules\RuleInterface $rules)
+    {
         $rules->apply($this->ruleBuilder);
 
         return $this;

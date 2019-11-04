@@ -13,14 +13,16 @@ class GitHelperTest extends TestCase
     /** @var \glen\PhpCsFixerConfig\Filter\GitFilter */
     protected $helper;
 
-    public function setUp() {
+    public function setUp()
+    {
         $this->finder = new Finder();
 
         $gitFilter = new GitFilter(dirname(__DIR__));
         $gitFilter->apply($this->finder);
     }
 
-    public function testFiles() {
+    public function testFiles()
+    {
         $files = $this->getFinderRelativePaths($this->finder);
 
         $this->assertContains($this->path('tests/GitHelperTest.php'), $files, 'Must contain tests/GitHelperTest.php');

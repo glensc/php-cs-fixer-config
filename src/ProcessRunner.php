@@ -12,7 +12,8 @@ class ProcessRunner
      * @param string $command
      * @return string
      */
-    public static function run($command) {
+    public static function run($command)
+    {
         $process = new Process($command);
         $process->mustRun();
 
