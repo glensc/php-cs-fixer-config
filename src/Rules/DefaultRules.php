@@ -17,10 +17,6 @@ class DefaultRules implements RuleInterface {
 	 */
 	private function getRules() {
 		return [
-			// PSR2 that conflicts with Delfi Standard
-			'indentation_type' => false,
-			'class_definition' => false,
-
 			'binary_operator_spaces' => ['align_double_arrow' => false],
 			'blank_line_before_return' => true,
 			'function_declaration' => ['closure_function_spacing' => 'one'],
