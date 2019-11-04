@@ -2,6 +2,7 @@
 
 namespace glen\PhpCsFixerConfig\Test;
 
+use glen\PhpCsFixerConfig\Config;
 use PHPUnit_Framework_MockObject_MockObject;
 use Symfony\Component\Finder\Finder;
 
@@ -16,7 +17,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         /**
          * @var \glen\PhpCsFixerConfig\Config|PHPUnit_Framework_MockObject_MockObject $stub
          */
-        $stub = $this->getMockBuilder('\\glen\\PhpCsFixerConfig\\Config')
+        $stub = $this->getMockBuilder(Config::class)
             ->setMethods(['applyFinderFilter'])
             ->getMock();
 
