@@ -1,6 +1,6 @@
 <?php
 
-namespace ED\CS\Config;
+namespace glen\PhpCsFixerConfig;
 
 use RuntimeException;
 use Symfony\Component\Process\Exception\ProcessFailedException;

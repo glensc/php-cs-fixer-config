@@ -1,8 +1,8 @@
 <?php
 
-namespace ED\CS\Config\Test;
+namespace glen\PhpCsFixerConfig\Test;
 
-use ED\CS\Config\PlatformVersion;
+use glen\PhpCsFixerConfig\PlatformVersion;
 
 class PlatformDetectTest extends TestCase {
 	public function testComposerNoVersion() {

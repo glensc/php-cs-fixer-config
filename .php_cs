@@ -1,7 +1,7 @@
 <?php
 // vim:ft=php
 
-/** @var ED\CS\Config\ED $config */
+/** @var \glen\PhpCsFixerConfig\Config $config */
 $config = require __DIR__ . '/phpcs.php';
 
 $finder = $config->getFinder();

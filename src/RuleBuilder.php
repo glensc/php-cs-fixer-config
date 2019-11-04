@@ -1,6 +1,6 @@
 <?php
 
-namespace ED\CS\Config;
+namespace glen\PhpCsFixerConfig;
 
 use ArrayAccess;
 use Traversable;

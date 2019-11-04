@@ -1,8 +1,8 @@
 <?php
 
-namespace ED\CS\Config\Filter;
+namespace glen\PhpCsFixerConfig\Filter;
 
-use ED\CS\Config\ProcessRunner;
+use glen\PhpCsFixerConfig\ProcessRunner;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 

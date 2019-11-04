@@ -1,14 +1,14 @@
 <?php
 
-namespace ED\CS\Config;
+namespace glen\PhpCsFixerConfig;
 
-use PhpCsFixer\Config;
+use PhpCsFixer\Config as PhpCsFixerConfig;
 use PhpCsFixer\Finder;
 
 /**
  * @method Finder getFinder()
  */
-class ED extends Config {
+class Config extends PhpCsFixerConfig {
 	/** @var RuleBuilder */
 	private $ruleBuilder;
 
@@ -48,7 +48,6 @@ class ED extends Config {
 	/**
 	 * Apply $filter to $finder instance.
 	 *
-	 * @param Filter\FilterInterface $filter
 	 * @return $this
 	 */
 	protected function applyFinderFilter(Filter\FilterInterface $filter) {
@@ -60,7 +59,6 @@ class ED extends Config {
 	/**
 	 * Apply $filter to $finder instance.
 	 *
-	 * @param Rules\RuleInterface $rules
 	 * @return $this
 	 */
 	protected function applyRuleSet(Rules\RuleInterface $rules) {

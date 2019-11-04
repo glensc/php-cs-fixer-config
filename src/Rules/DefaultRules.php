@@ -1,13 +1,10 @@
 <?php
 
-namespace ED\CS\Config\Rules;
+namespace glen\PhpCsFixerConfig\Rules;
 
-use ED\CS\Config\RuleBuilder;
+use glen\PhpCsFixerConfig\RuleBuilder;
 
 class DefaultRules implements RuleInterface {
-	/**
-	 * @param RuleBuilder $builder
-	 */
 	public function apply(RuleBuilder $builder) {
 		$builder->applyRules($this->getSymfonyRules());
 		$builder->applyRules($this->getRiskyRules());

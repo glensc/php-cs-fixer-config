@@ -1,15 +1,15 @@
 <?php
 
-namespace ED\CS\Config\Test;
+namespace glen\PhpCsFixerConfig\Test;
 
-use ED\CS\Config\Filter\GitFilter;
+use glen\PhpCsFixerConfig\Filter\GitFilter;
 use PhpCsFixer\Finder;
 
 class GitHelperTest extends TestCase {
 	/** @var Finder */
 	protected $finder;
 
-	/** @var GitFilter */
+	/** @var \glen\PhpCsFixerConfig\Filter\GitFilter */
 	protected $helper;
 
 	public function setUp() {

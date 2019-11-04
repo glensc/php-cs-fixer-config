@@ -1,11 +1,11 @@
 {
-	"name": "ed/php-cs-fixer-config",
+	"name": "glen/php-cs-fixer-config",
 	"description": "Provides a configuration for php-cs-fixer",
 	"license": "proprietary",
 	"authors": [
 		{
 			"name": "Elan Ruusamäe",
-			"email": "glen@delfi.ee"
+			"email": "glen@pld-linux.org"
 		}
 	],
 	"config": {
@@ -29,12 +29,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"ED\\CS\\Config\\": "src/"
+			"glen\\PhpCsFixerConfig\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"ED\\CS\\Config\\Test\\": "tests/"
+			"glen\\PhpCsFixerConfig\\Test\\": "tests/"
 		}
 	}
 }

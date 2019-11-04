@@ -1,9 +1,9 @@
 <?php
 
-namespace ED\CS\Config\Rules;
+namespace glen\PhpCsFixerConfig\Rules;
 
-use ED\CS\Config\PlatformVersion;
-use ED\CS\Config\RuleBuilder;
+use glen\PhpCsFixerConfig\PlatformVersion;
+use glen\PhpCsFixerConfig\RuleBuilder;
 
 class PlatformRules implements RuleInterface {
 	/** @var PlatformVersion */
@@ -13,9 +13,6 @@ class PlatformRules implements RuleInterface {
 		$this->platform = new PlatformVersion($dir);
 	}
 
-	/**
-	 * @param RuleBuilder $builder
-	 */
 	public function apply(RuleBuilder $builder) {
 		$php54 = $this->platform->satisfies('>=5.4');
 		$php70 = $this->platform->satisfies('>=7.0');
