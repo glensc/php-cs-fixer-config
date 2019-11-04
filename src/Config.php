@@ -29,8 +29,8 @@ class Config extends PhpCsFixerConfig
         $this->applyFinderFilter(new Filter\GitFilter($this->projectRoot));
         $this->applyFinderFilter(new Filter\DefaultFilter());
 
-        $this->applyRuleSet(new Rules\PlatformRules($this->projectRoot));
         $this->applyRuleSet(new Rules\DefaultRules());
+        $this->applyRuleSet(new Rules\PlatformRules($this->projectRoot));
     }
 
     public function getProjectRoot()
