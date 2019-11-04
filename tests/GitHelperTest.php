@@ -22,7 +22,7 @@ class GitHelperTest extends TestCase {
 	public function testFiles() {
 		$files = $this->getFinderRelativePaths($this->finder);
 
-		$this->assertContains($this->path('src/ED.php'), $files, 'Must contain src/ED.php');
+		$this->assertContains($this->path('tests/GitHelperTest.php'), $files, 'Must contain tests/GitHelperTest.php');
 
 		$unique = array_unique($files);
 		$this->assertEquals($unique, $files, 'File list does not contain duplicate entries');
