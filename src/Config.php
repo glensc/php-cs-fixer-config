@@ -13,22 +13,29 @@ class Config extends PhpCsFixerConfig
     /** @var RuleBuilder */
     private $ruleBuilder;
 
+    /** @var string */
+    private $projectRoot;
+
     public function __construct()
     {
         parent::__construct();
 
-        $dir = ProjectRootDetector::detect();
-
+        $this->projectRoot = ProjectRootDetector::detect();
         $this->ruleBuilder = new RuleBuilder();
 
         $this->setUsingCache(true);
         $this->setRiskyAllowed(true);
 
-        $this->applyFinderFilter(new Filter\GitFilter($dir));
+        $this->applyFinderFilter(new Filter\GitFilter($this->projectRoot));
         $this->applyFinderFilter(new Filter\DefaultFilter());
 
-        $this->applyRuleSet(new Rules\PlatformRules($dir));
+        $this->applyRuleSet(new Rules\PlatformRules($this->projectRoot));
         $this->applyRuleSet(new Rules\DefaultRules());
+    }
+
+    public function getProjectRoot()
+    {
+        return $this->projectRoot;
     }
 
     public function getRuleBuilder()
