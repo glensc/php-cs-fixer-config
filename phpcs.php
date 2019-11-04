@@ -1,8 +1,11 @@
 <?php
 
+use glen\PhpCsFixerConfig\Config;
+
 // do not use composer here
 // causes fatals when different symfony versions installed
-require_once __DIR__ . '/src/ED.php';
+
+require_once __DIR__ . '/src/Config.php';
 require_once __DIR__ . '/src/Filter/FilterInterface.php';
 require_once __DIR__ . '/src/Filter/DefaultFilter.php';
 require_once __DIR__ . '/src/Filter/GitFilter.php';
@@ -14,4 +17,4 @@ require_once __DIR__ . '/src/Rules/RuleInterface.php';
 require_once __DIR__ . '/src/Rules/DefaultRules.php';
 require_once __DIR__ . '/src/Rules/PlatformRules.php';
 
-return new ED\CS\Config\ED();
+return new Config();

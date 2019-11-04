@@ -1,13 +1,10 @@
 <?php
 
-namespace ED\CS\Config\Rules;
+namespace glen\PhpCsFixerConfig\Rules;
 
-use ED\CS\Config\RuleBuilder;
+use glen\PhpCsFixerConfig\RuleBuilder;
 
 class DefaultRules implements RuleInterface {
-	/**
-	 * @param RuleBuilder $builder
-	 */
 	public function apply(RuleBuilder $builder) {
 		$builder->applyRules($this->getSymfonyRules());
 		$builder->applyRules($this->getRiskyRules());
@@ -20,10 +17,6 @@ class DefaultRules implements RuleInterface {
 	 */
 	private function getRules() {
 		return [
-			// PSR2 that conflicts with Delfi Standard
-			'indentation_type' => false,
-			'class_definition' => false,
-
 			'binary_operator_spaces' => ['align_double_arrow' => false],
 			'blank_line_before_return' => true,
 			'function_declaration' => ['closure_function_spacing' => 'one'],

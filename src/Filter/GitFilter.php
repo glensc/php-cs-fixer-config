@@ -1,8 +1,8 @@
 <?php
 
-namespace ED\CS\Config\Filter;
+namespace glen\PhpCsFixerConfig\Filter;
 
-use ED\CS\Config\ProcessRunner;
+use glen\PhpCsFixerConfig\ProcessRunner;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -29,7 +29,7 @@ class GitFilter implements FilterInterface {
 
 		// this filter would accept only files that are present in Git
 		$finder->filter(function (SplFileInfo $file) use (&$files) {
-			return array_search($file->getRelativePathname(), $files);
+			return array_search($file->getRelativePathname(), $files, true);
 		});
 	}
 

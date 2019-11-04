@@ -1,6 +1,6 @@
 <?php
 
-namespace ED\CS\Config\Filter;
+namespace glen\PhpCsFixerConfig\Filter;
 
 use Symfony\Component\Finder\Finder;
 

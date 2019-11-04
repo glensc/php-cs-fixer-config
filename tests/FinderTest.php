@@ -1,6 +1,6 @@
 <?php
 
-namespace ED\CS\Config\Test;
+namespace glen\PhpCsFixerConfig\Test;
 
 class FinderTest extends TestCase {
 	/**

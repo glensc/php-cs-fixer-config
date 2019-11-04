@@ -1,6 +1,6 @@
 <?php
 
-namespace ED\CS\Config\Test;
+namespace glen\PhpCsFixerConfig\Test;
 
 use PHPUnit_Framework_MockObject_MockObject;
 use Symfony\Component\Finder\Finder;
@@ -9,13 +9,13 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Get Config instance configured to run in $dir
 	 *
-	 * @return \ED\CS\Config\ED
+	 * @return \glen\PhpCsFixerConfig\Config
 	 */
 	protected function getConfig($dir = null) {
 		/**
-		 * @var \ED\CS\Config\ED|PHPUnit_Framework_MockObject_MockObject $stub
+		 * @var \glen\PhpCsFixerConfig\Config|PHPUnit_Framework_MockObject_MockObject $stub
 		 */
-		$stub = $this->getMockBuilder('\\ED\\CS\\Config\\ED')
+		$stub = $this->getMockBuilder('\\glen\\PhpCsFixerConfig\\Config')
 			->setMethods(['applyFinderFilter'])
 			->getMock();
 
@@ -39,7 +39,6 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase {
 	/**
 	 * Iterate over finder and return relative paths from it.
 	 *
-	 * @param Finder $finder
 	 * @return array
 	 */
 	protected function getFinderRelativePaths(Finder $finder) {

@@ -1,12 +1,9 @@
 <?php
 
-namespace ED\CS\Config\Rules;
+namespace glen\PhpCsFixerConfig\Rules;
 
-use ED\CS\Config\RuleBuilder;
+use glen\PhpCsFixerConfig\RuleBuilder;
 
 interface RuleInterface {
-	/**
-	 * @param RuleBuilder $builder
-	 */
 	public function apply(RuleBuilder $builder);
 }
