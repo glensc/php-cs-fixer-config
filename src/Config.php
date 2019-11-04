@@ -31,6 +31,15 @@ class Config extends PhpCsFixerConfig
 
         $this->applyRuleSet(new Rules\DefaultRules());
         $this->applyRuleSet(new Rules\PlatformRules($this->projectRoot));
+
+        $this->configure();
+    }
+
+    /**
+     * Method called from constructor to do extra configuration.
+     * To be overridden by a subclass.
+     */
+    protected function configure() {
     }
 
     public function getProjectRoot()
