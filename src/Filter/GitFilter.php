@@ -29,7 +29,7 @@ class GitFilter implements FilterInterface {
 
 		// this filter would accept only files that are present in Git
 		$finder->filter(function (SplFileInfo $file) use (&$files) {
-			return array_search($file->getRelativePathname(), $files);
+			return array_search($file->getRelativePathname(), $files, true);
 		});
 	}
 
