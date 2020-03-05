@@ -2,6 +2,28 @@
 
 Provides default configuration and configuration builder for [friendsofphp/php-cs-fixer].
 
+Does the following things:
+- [Filter\GitFilter](src/Filter/GitFilter.php): Configures to accept only files that are present in Git
+- [Filter\DefaultFilter](src/Filter/DefaultFilter.php): Configures to include `.php_cs` to file set
+- [Rules\DefaultRules](src/Rules/DefaultRules.php): Applies set of rules based on @Symfony rules
+- [Rules\PlatformRules](src/Rules/PlatformRules.php): Enables extra rules that are dependent on PHP version
+
+The PHP version determined by:
+- read from `composer.lock` (if file present):
+    ```json
+    "platform-overrides": {
+        "php": "5.6.0"
+    }
+    ```
+- read from `composer.json:`
+    ```json
+    "config": {
+        "platform": {
+          "php": "5.6.0"
+        }
+    }
+    ```
+
 [friendsofphp/php-cs-fixer]: http://github.com/FriendsOfPHP/PHP-CS-Fixer
 
 ## Installation
