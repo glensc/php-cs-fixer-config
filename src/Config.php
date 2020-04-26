@@ -3,6 +3,7 @@
 namespace glen\PhpCsFixerConfig;
 
 use PhpCsFixer\Config as PhpCsFixerConfig;
+use PhpCsFixer\Console\Application;
 use PhpCsFixer\Finder;
 
 /**
@@ -23,6 +24,7 @@ class Config extends PhpCsFixerConfig
         $this->projectRoot = ProjectRootDetector::detect();
         $this->ruleBuilder = new RuleBuilder();
 
+        $this->setCacheFile($this->getCacheFile());
         $this->setUsingCache(true);
         $this->setRiskyAllowed(true);
 
@@ -44,6 +46,10 @@ class Config extends PhpCsFixerConfig
     public function getProjectRoot()
     {
         return $this->projectRoot;
+    }
+
+    public function getCacheFile() {
+        return sprintf('%s/vendor/php_cs-%s.cache', $this->projectRoot, Application::VERSION);
     }
 
     public function getRuleBuilder()
