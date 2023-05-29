@@ -28,5 +28,11 @@ class PlatformRules implements RuleInterface
 
         $builder['combine_nested_dirname'] = $php70;
         $builder['void_return'] = $php71;
+       
+        // visibility settings of class constans are available from php7.1+
+        $builder['visibility_required'] = ['elements' => ['property', 'method']];
+        if ($php71) {
+            $builder['visibility_required']['elements'][] = 'const';  
+        }
     }
 }
