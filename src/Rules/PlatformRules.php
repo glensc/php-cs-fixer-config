@@ -30,9 +30,9 @@ class PlatformRules implements RuleInterface
         $builder['void_return'] = $php71;
        
         // visibility settings of class constans are available from php7.1+
-        $builder['visibility_required'] = ['property', 'method'];
+        $builder['visibility_required'] = ['elements' => ['property', 'method']];
         if ($php71) {
-            $builder['visibility_required'][] = 'const';  
+            $builder['visibility_required']['elements'][] = 'const';  
         }
     }
 }
